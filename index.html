@@ -5,6 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
     <style type="text/tailwindcss">
         @theme {
         --color-clifford: #0047cd;
@@ -15,346 +18,380 @@
 </head>
 
 <body>
-
-    <nav
-        class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-white/10 shadow-lg  backdrop-blur-md rounded-4xl px-6 py-4 flex items-center justify-between w-[90%] max-w-3xl z-50 hover:bg-clifford">
-        <a href="#" class="text-xl font-extrabold text-white ">BillKollect</a>
-        <ul class="flex space-x-6">
-            <li><a href="#" class="text-white">About</a></li>
-            <li><a href="#" class="text-white">Services</a></li>
-            <li><a href="#" class="text-white">Contact</a></li>
-        </ul>
-    </nav>
-    <section class="text-zinc-100 body-font bg-clifford  py-4">
-
+    <main id="app">
+        <nav
+            class="fixed top-4 left-1/2 transform -translate-x-1/2 md:bg-white/10 bg-clifford shadow-lg  backdrop-blur-md rounded-4xl px-6 py-4 flex items-center justify-between w-[90%] max-w-3xl z-50 hover:bg-clifford">
+            <a href="#" class="text-2xl font-extrabold text-white">BillKollect</a>
+            <ul class=" space-x-6 md:flex hidden">
+                <li><a href="about.html" class="text-white">About</a></li>
+                <li><a href="#" class="text-white">Services</a></li>
+                <li><a href="#" class="text-white">Contact</a></li>
+            </ul>
+            <button class="bg-white px-4 p-2 rounded-2xl md:hidden block" @click="menu = !menu">
 
 
-        <section class="to-zinc-900 text-white  relative overflow-hidden my-40">
-            <!-- Background patterns -->
-            <div class="absolute inset-0 opacity-10">
-                <div
-                    class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_800px_at_100%_200px,rgba(56,189,248,0.12),transparent)]">
-                </div>
-                <div
-                    class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_800px_at_0%_100%,rgba(124,58,237,0.12),transparent)]">
-                </div>
-            </div>
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-12">
-                    <!-- Text Content -->
-                    <div class="w-full md:w-1/2 mb-10 md:mb-0 animate-fade-in-up" style="--tw-animate-duration: 800ms;">
-                        <h1 class="text-5xl md:text-6xl lg:text-8xl font-extrabold  leading-tight tracking-tight">
-                            BillKollect
+                <i v-if="menu" class="fa-solid fa-x text-xl"></i>
+                <i v-else class="fa-solid text-xl fa-bars"></i>
+            </button>
+        </nav>
+        <nav :class="menu ? 'flex' : 'hidden'"
+            class="  fixed top-20 left-1/2 transform -translate-x-1/2 md:bg-white/10 bg-clifford shadow-lg  backdrop-blur-md rounded-4xl px-6 py-8  items-center justify-between w-[90%] max-w-3xl z-30 hover:bg-clifford transition-all duration-300">
+            <ul class="flex flex-col ">
+                <li class="py-2"><a href="about.html" class="text-white text-lg">About </a></li>
+                <li class="py-2"><a href="#" class="text-white text-lg">Services</a></li>
+                <li class="py-2"><a href="#" class="text-white text-lg ">Contact</a></li>
+            </ul>
+        </nav>
+        <section class="text-zinc-100 body-font bg-clifford  py-4">
 
 
 
-
-
-
-                        </h1>
-
-                        <p class="text-zinc-950 text-3xl md:text-4xl lg:text-6xl pb-8 font-semibold">Payment
-                            System</p>
-                        <p class="text-zinc-300 text-lg md:text-xl mb-10 max-w-lg leading-relaxed animate-fade-in-up"
-                            style="--tw-animate-duration: 1200ms; --tw-animate-delay: 200ms;">
-                            Pay securely and efficiently with our cutting-edge platform. Real-time data, advanced
-                            analytics, and zero commission fees.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-5 animate-fade-in-up"
-                            style="--tw-animate-duration: 1200ms; --tw-animate-delay: 400ms;">
-                            <button
-                                class=" md:w-1/3 bg-gradient-to-r from-zinc-950 to-zinc-700 hover:from-zinc-600 hover:to-zinc-700 text-white py-4 px-8 rounded-0 font-semibold transition-all duration-300 text-base md:text-lg shadow-lg hover:shadow-zinc-500/50 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group">
-                                <span
-                                    class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full opacity-10 group-hover:w-32 group-hover:h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></span>
-                                Pay Now
-                            </button>
-                            <button
-                                class="bg-transparent border border-zinc-500 text-zinc-400 hover:text-zinc-300 hover:border-zinc-400 hover:bg-zinc-500/10 py-4 px-8 rounded-0 font-semibold transition-all duration-300 text-base md:text-lg shadow-lg hover:shadow-zinc-500/30 hover:-translate-y-1 active:translate-y-0 backdrop-blur-sm">
-                                Learn More
-                            </button>
-                        </div>
-                        <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 text-sm text-zinc-400 animate-fade-in-up"
-                            style="--tw-animate-duration: 1200ms; --tw-animate-delay: 600ms;">
-                            <div
-                                class="flex items-center transform hover:scale-105 transition-transform duration-300 hover:text-zinc-300">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="h-6 w-6 mr-2 text-green-500 animate-pulse"
-                                    style="--tw-animate-duration: 3000ms;" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>Secure Transactions</span>
-                            </div>
-                            <div
-                                class="flex items-center transform hover:scale-105 transition-transform duration-300 hover:text-zinc-300">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="h-6 w-6 mr-2 text-green-500 animate-pulse"
-                                    style="--tw-animate-duration: 3000ms;" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>24/7 Support</span>
-                            </div>
-                        </div>
+            <section class="to-zinc-900 text-white  relative overflow-hidden my-40">
+                <!-- Background patterns -->
+                <div class="absolute inset-0 opacity-10">
+                    <div
+                        class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_800px_at_100%_200px,rgba(56,189,248,0.12),transparent)]">
                     </div>
-
-                    <!-- Image/Visual Element -->
-
-
-                    <div class="pl-8 py-16 bg-blue-200/20 rounded-3xl  md:w-1/2 w-full">
-                        <img class="object-cover object-center rounded" alt="hero" src="payimagehero.webp">
+                    <div
+                        class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_800px_at_0%_100%,rgba(124,58,237,0.12),transparent)]">
                     </div>
-
-
-
-
                 </div>
-            </div>
-        </section>
+                <div class="container mx-auto px-6 relative z-10">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                        <!-- Text Content -->
+                        <div class="w-full md:w-1/2 mb-10 md:mb-0 animate-fade-in-up"
+                            style="--tw-animate-duration: 800ms;">
+                            <h1 class="text-5xl md:text-6xl lg:text-8xl font-extrabold  leading-tight tracking-tight">
+                                BillKollect
 
 
-    </section>
 
-    <section class="text-zinc-600 body-font">
-        <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
 
-            <div class="text-center lg:w-2/3 w-full my-12">
-                <h1 class="title-font md:text-5xl text-4xl mb-4 font-bold text-clifford ">Pay bills and send money
-                    without stress</h1>
-                <p class="mb-8 text-xl mx-8">Securely make payments to suppliers, vendors, staff and
-                    other
-                    billers
-                    into their
-                    accounts in any bank or mobile wallets, around-the-clock, including after official
-                    work hours, weekends and public holidays.</p>
-                <div class="flex flex-col sm:flex-row gap-5 animate-fade-in-up"
-                    style="--tw-animate-duration: 1200ms; --tw-animate-delay: 400ms;">
-                    <button
-                        class=" md:w-1/2 bg-clifford hover:from-zinc-600 hover:to-zinc-700 text-white py-4 px-8 rounded-0 font-semibold transition-all duration-300 text-base md:text-lg shadow-lg hover:shadow-zinc-500/50 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group">
-                        <span
-                            class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full opacity-10 group-hover:w-32 group-hover:h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></span>
-                        Pay a Biller →
-                    </button>
-                    <button
-                        class=" md:w-1/2 bg-transparent border border-zinc-500 text-zinc-400 hover:text-zinc-900 hover:border-zinc-400 hover:bg-zinc-500/10 py-4 px-8 rounded-0 font-semibold transition-all duration-300 text-base md:text-lg shadow-lg hover:shadow-zinc-500/30 hover:-translate-y-1 active:translate-y-0 backdrop-blur-sm">
-                        Become a Biller →
-                    </button>
+
+
+                            </h1>
+
+                            <p class="text-zinc-950 text-3xl md:text-4xl lg:text-6xl pb-8 font-semibold">Payment
+                                System</p>
+                            <p class="text-zinc-300 text-lg md:text-xl mb-10 max-w-lg leading-relaxed animate-fade-in-up"
+                                style="--tw-animate-duration: 1200ms; --tw-animate-delay: 200ms;">
+                                Pay securely and efficiently with our cutting-edge platform. Real-time data, advanced
+                                analytics, and zero commission fees.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-5 animate-fade-in-up"
+                                style="--tw-animate-duration: 1200ms; --tw-animate-delay: 400ms;">
+                                <button
+                                    class=" md:w-1/3 bg-gradient-to-r from-zinc-950 to-zinc-700 hover:from-zinc-600 hover:to-zinc-700 text-white py-4 px-8 rounded-0 font-semibold transition-all duration-300 text-base md:text-lg shadow-lg hover:shadow-zinc-500/50 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group">
+                                    <span
+                                        class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full opacity-10 group-hover:w-32 group-hover:h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></span>
+                                    Pay Now
+                                </button>
+                                <button
+                                    class="bg-transparent border border-zinc-500 text-zinc-400 hover:text-zinc-300 hover:border-zinc-400 hover:bg-zinc-500/10 py-4 px-8 rounded-0 font-semibold transition-all duration-300 text-base md:text-lg shadow-lg hover:shadow-zinc-500/30 hover:-translate-y-1 active:translate-y-0 backdrop-blur-sm">
+                                    Learn More
+                                </button>
+                            </div>
+                            <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 text-sm text-zinc-400 animate-fade-in-up"
+                                style="--tw-animate-duration: 1200ms; --tw-animate-delay: 600ms;">
+                                <div
+                                    class="flex items-center transform hover:scale-105 transition-transform duration-300 hover:text-zinc-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6 mr-2 text-green-500 animate-pulse"
+                                        style="--tw-animate-duration: 3000ms;" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Secure Transactions</span>
+                                </div>
+                                <div
+                                    class="flex items-center transform hover:scale-105 transition-transform duration-300 hover:text-zinc-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6 mr-2 text-green-500 animate-pulse"
+                                        style="--tw-animate-duration: 3000ms;" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span>24/7 Support</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Image/Visual Element -->
+
+
+                        <div class="pl-8 py-16 bg-blue-200/20 rounded-3xl  md:w-1/2 w-full">
+                            <img class="object-cover object-center rounded" alt="hero" src="payimagehero.webp">
+                        </div>
+
+
+
+
+                    </div>
                 </div>
-            </div>
-
-            <img class=" w-6/6 mb-10 object-cover object-center rounded block md:hidden bg-clifford/10  p-4 " alt="hero"
-                src="providers.png">
-            <img class="lg:w-5/6 md:w-5/6 w-4/6 mb-10 object-cover object-center rounded hidden md:block bg-clifford/10 p-12"
-                alt="hero" src="lgProviders.png">
-        </div>
-    </section>
-
-
-    <section class="text-zinc-600 body-font bg-clifford/10">
-        <div class="container mx-auto flex px-12  py-24 md:flex-row flex-col items-center">
-            <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                <img class="object-cover object-center rounded" alt="hero" src="analytics.webp">
-            </div>
-            <div
-                class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-                <h1 class="title-font md:text-5xl text-3xl mb-4 font-medium text-clifford">Information at speed of
-                    light</h1>
-
-                <p class="mb-8 text-3xl">Retrieve it, filter it, report it, share it. Any way you want.</p>
-                <div class=" md:flex-row flex-col items-center justify-center">
-                    <button
-                        class=" bg-clifford hover:from-zinc-600 hover:to-zinc-700 text-white py-8 px-12 rounded-0 font-semibold transition-all duration-300 text-base md:text-lg shadow-lg hover:shadow-zinc-500/50 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group">
-                        <span
-                            class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full opacity-10 group-hover:w-32 group-hover:h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></span>
-                        Everything you need one click away
-                    </button>
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-    <footer class="text-zinc-400 bg-black body-font">
-
-
-
-        <section class="container mx-auto flex px-5 py-40 items-center justify-center flex-col">
-
-
-
-
-
-
-
-
-
-            <span class="text-clifford md:text-8xl text-7xl mb-4 font-bold">Payments.</span>
-            <span>
-                <span class="text-blue-400 md:text-8xl text-7xl mb-4 font-bold px-2">Made.</span>
-                <span class="text-white md:text-8xl text-7xl mb-4 font-bold px-2">Easy.</span>
-            </span>
+            </section>
 
 
         </section>
 
+        <section class="text-zinc-600 body-font">
+            <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
 
+                <div class="text-center lg:w-2/3 w-full my-12">
+                    <h1 class="title-font md:text-5xl text-4xl mb-4 font-bold text-clifford ">Pay bills and send money
+                        without stress</h1>
+                    <p class="mb-8 text-xl mx-8">Securely make payments to suppliers, vendors, staff and
+                        other
+                        billers
+                        into their
+                        accounts in any bank or mobile wallets, around-the-clock, including after official
+                        work hours, weekends and public holidays.</p>
+                    <div class="flex flex-col sm:flex-row gap-5 animate-fade-in-up"
+                        style="--tw-animate-duration: 1200ms; --tw-animate-delay: 400ms;">
+                        <button
+                            class=" md:w-1/2 bg-clifford hover:from-zinc-600 hover:to-zinc-700 text-white py-4 px-8 rounded-0 font-semibold transition-all duration-300 text-base md:text-lg shadow-lg hover:shadow-zinc-500/50 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group">
+                            <span
+                                class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full opacity-10 group-hover:w-32 group-hover:h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></span>
+                            Pay a Biller →
+                        </button>
+                        <button
+                            class=" md:w-1/2 bg-transparent border border-zinc-500 text-zinc-400 hover:text-zinc-900 hover:border-zinc-400 hover:bg-zinc-500/10 py-4 px-8 rounded-0 font-semibold transition-all duration-300 text-base md:text-lg shadow-lg hover:shadow-zinc-500/30 hover:-translate-y-1 active:translate-y-0 backdrop-blur-sm">
+                            Become a Biller →
+                        </button>
+                    </div>
+                </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div
-            class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-
-
-
-
-            <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-                <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2"
-                        class="w-10 h-10 text-white p-2 bg-clifford rounded-full" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                    </svg>
-                    <span class="ml-3 text-xl">BillKollect</span>
-                </a>
-                <p class="mt-2 text-sm text-zinc-500">Seemless payments that feel like magic</p>
+                <img class=" w-6/6 mb-10 object-cover object-center rounded block md:hidden bg-clifford/10  p-4 "
+                    alt="hero" src="providers.png">
+                <img class="lg:w-5/6 md:w-5/6 w-4/6 mb-10 object-cover object-center rounded hidden md:block bg-clifford/10 p-12"
+                    alt="hero" src="lgProviders.png">
             </div>
-            <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
-                    <nav class="list-none mb-10">
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">First Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Second Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Third Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Fourth Link</a>
-                        </li>
-                    </nav>
+        </section>
+
+
+        <section class="text-zinc-600 body-font bg-clifford/10">
+            <div class="container mx-auto flex px-12  py-24 md:flex-row flex-col items-center">
+                <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+                    <img class="object-cover object-center rounded" alt="hero" src="analytics.webp">
                 </div>
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
-                    <nav class="list-none mb-10">
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">First Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Second Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Third Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Fourth Link</a>
-                        </li>
-                    </nav>
+                <div
+                    class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                    <h1 class="title-font md:text-5xl text-3xl mb-4 font-medium text-clifford">Information at speed of
+                        light</h1>
+
+                    <p class="mb-8 text-3xl">Retrieve it, filter it, report it, share it. Any way you want.</p>
+                    <div class=" md:flex-row flex-col items-center justify-center">
+                        <button
+                            class=" bg-clifford hover:from-zinc-600 hover:to-zinc-700 text-white py-8 px-12 rounded-0 font-semibold transition-all duration-300  text-xl shadow-lg hover:shadow-zinc-500/50 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group">
+                            <span
+                                class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full opacity-10 group-hover:w-32 group-hover:h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></span>
+                            Everything you need one click away
+                        </button>
+                    </div>
+
                 </div>
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
-                    <nav class="list-none mb-10">
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">First Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Second Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Third Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Fourth Link</a>
-                        </li>
-                    </nav>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
-                    <nav class="list-none mb-10">
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">First Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Second Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Third Link</a>
-                        </li>
-                        <li>
-                            <a class="text-zinc-400 hover:text-white">Fourth Link</a>
-                        </li>
-                    </nav>
-                </div>
+
+
             </div>
-        </div>
-        <div class="bg-clifford ">
-            <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-                <p class="text-zinc-100 text-sm text-center sm:text-left">© 2025 BillKollect —
-                    <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-zinc-300 ml-1"
-                        target="_blank">@technologies</a>
-                </p>
-                <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-                    <a class="text-zinc-100">
-                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            class="w-5 h-5" viewBox="0 0 24 24">
-                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                        </svg>
-                    </a>
-                    <a class="ml-3 text-zinc-100">
-                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            class="w-5 h-5" viewBox="0 0 24 24">
-                            <path
-                                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a class="ml-3 text-zinc-100">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                        </svg>
-                    </a>
-                    <a class="ml-3 text-zinc-100">
-                        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-                            <path stroke="none"
-                                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
-                            </path>
-                            <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                        </svg>
-                    </a>
+
+        </section>
+
+
+        <!-- Why Choose Us -->
+        <section class="py-40 bg-zinc-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center py-12">
+                    <h2 class="text-5xl font-extrabold tracking-tight text-clifford ">
+                        Why Choose BillKollect?
+                    </h2>
+                </div>
+                <div class="my-16">
+                    <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-4 md:gap-x-8 md:gap-y-10">
+                        <div class="text-center">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto">
+                                <i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="mt-5 text-lg leading-6 font-medium text-clifford">Secure Payments</h3>
+                            <p class="mt-2 text-base text-zinc-700">
+                                Bank-grade security for all transactions
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto">
+                                <i class="fas fa-bolt text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="mt-5 text-lg leading-6 font-medium text-clifford">Instant Processing</h3>
+                            <p class="mt-2 text-base text-zinc-700">
+                                Real-time payment processing and confirmations
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto">
+                                <i class="fas fa-hand-holding-usd text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="mt-5 text-lg leading-6 font-medium text-clifford">Low Fees</h3>
+                            <p class="mt-2 text-base text-zinc-700">
+                                Competitive rates for all services
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto">
+                                <i class="fas fa-headset text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="mt-5 text-lg leading-6 font-medium text-clifford">24/7 Support</h3>
+                            <p class="mt-2 text-base text-zinc-700">
+                                Round-the-clock customer assistance
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="text-center py-12">
+                    <div class="md:flex-row flex-col items-center justify-center">
+                        <button
+                            class=" bg-clifford hover:from-zinc-600 hover:to-zinc-700 text-white py-8 px-12 rounded-0 font-semibold transition-all duration-300  text-2xl shadow-lg hover:shadow-zinc-500/50 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group">
+                            <span
+                                class="absolute w-0 h-0  transition-all duration-500 ease-out bg-white rounded-full opacity-10 group-hover:w-32 group-hover:h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></span>
+                            Get Started Today.
+                        </button>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+
+        <footer class="text-zinc-400 bg-black body-font">
+
+            <section class="container mx-auto flex px-5 py-40 items-center justify-center flex-col">
+
+
+
+                <span class="text-clifford md:text-8xl text-6xl mb-4 font-bold">Payments.</span>
+                <span>
+                    <span class="text-blue-400 md:text-8xl text-6xl mb-4 font-bold px-2">Made.</span>
+                    <span class="text-white md:text-8xl text-6xl mb-4 font-bold px-2">Easy.</span>
                 </span>
+
+
+            </section>
+
+            <div
+                class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+
+
+
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1">
+                        <span class="text-white font-bold text-2xl">Bill<span
+                                class="text-clifford">Kollect</span></span>
+                        <p class="mt-4 text-gray-300 text-sm">
+                            Your one-stop solution for all your payment needs. Quick, secure, and reliable.
+                        </p>
+                        <div class="mt-6 flex space-x-6">
+                            <a href="#" class="text-gray-400 hover:text-gray-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-span-1">
+                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Solutions</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">Airtime & Data</a></li>
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">Utility Bills</a></li>
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">Become a Biller</a></li>
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">Merchant Integration</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-span-1">
+                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Company</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">About Us</a></li>
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">Careers</a></li>
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">Partners</a></li>
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-span-1">
+                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Legal</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-base text-gray-300 hover:text-white">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </footer>
+            <div class="bg-clifford ">
+                <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+                    <p class="text-zinc-100 text-sm text-center sm:text-left">© 2025 BillKollect —
+                        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-zinc-300 ml-1"
+                            target="_blank">@technologies</a>
+                    </p>
+                    <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+                        <a class="text-zinc-100">
+                            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a class="ml-3 text-zinc-100">
+                            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                class="w-5 h-5" viewBox="0 0 24 24">
+                                <path
+                                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="ml-3 text-zinc-100">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                            </svg>
+                        </a>
+                        <a class="ml-3 text-zinc-100">
+                            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path stroke="none"
+                                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                                </path>
+                                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                            </svg>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+
+                    menu: false
+                }
+            }
+        }).mount('#app')
+    </script>
 
 </body>
 
