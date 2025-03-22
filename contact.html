@@ -1,0 +1,353 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style type="text/tailwindcss">
+        @theme {
+        --color-clifford: #0047cd;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>Contact Us - BillKollect</title>
+</head>
+
+<body>
+    <main id="app">
+        <!-- Navigation -->
+        <nav
+            class="fixed top-4 left-1/2 transform -translate-x-1/2 md:bg-white/10 bg-clifford shadow-lg backdrop-blur-md rounded-4xl px-6 py-2 flex items-center justify-between w-[90%] max-w-3xl z-50 hover:bg-clifford">
+            <a href="index.html" class="text-2xl font-extrabold text-white">BillKollect</a>
+            <ul class="space-x-6 md:flex hidden">
+                <li><a href="about.html" class="text-white">About</a></li>
+                <li><a href="contact.html" class="text-white">Contact</a></li>
+                <li><a href="https://app-billkollect.pages.dev"
+                        class="text-white bg-black/10 p-2 py-3 rounded-4xl hover:bg-black">Get
+                        Started</a></li>
+            </ul>
+            <button class="bg-white px-4 p-2 rounded-2xl md:hidden block" @click="menu = !menu">
+                <i v-if="menu" class="fa-solid fa-xmark text-xl"></i>
+                <i v-else class="fa-solid text-xl fa-bars"></i>
+            </button>
+        </nav>
+        <nav :class="menu ? 'flex' : 'hidden'"
+            class="fixed top-18 left-1/2 transform -translate-x-1/2 md:bg-white/10 bg-clifford shadow-lg backdrop-blur-md rounded-4xl px-6 py-8 items-center justify-between w-[90%] max-w-3xl z-30 hover:bg-clifford transition-all duration-300">
+            <ul class="flex flex-col">
+                <li class="py-2"><a href="about.html" class="text-white text-lg p-4">About</a></li>
+                <li class="py-2"><a href="contact.html" class="text-white text-lg p-4">Contact</a></li>
+                <li class="py-2"><a href="https://app-billkollect.pages.dev"
+                        class="text-white bg-black p-4 rounded-4xl">Get
+                        Started</a></li>
+            </ul>
+        </nav>
+
+        <!-- Header Section -->
+        <section class="text-zinc-100 body-font bg-clifford py-60">
+            <div class="container mx-auto flex px-5 items-center justify-center flex-col">
+                <div class="text-center lg:w-2/3 w-full">
+                    <h1 class="title-font text-5xl md:text-6xl mb-4 font-extrabold">Contact Us</h1>
+                    <p class="mb-8 text-xl leading-relaxed">We're here to help with your payment needs. Reach out to our
+                        team for support or inquiries.</p>
+                </div>
+                <!-- Abstract pattern background -->
+                <div class="absolute inset-0 opacity-10 overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_800px_at_100%_200px,rgba(56,189,248,0.12),transparent)]">
+                    </div>
+                    <div
+                        class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_800px_at_0%_100%,rgba(124,58,237,0.12),transparent)]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="text-zinc-600 body-font relative py-16">
+            <div class="container px-5 py-12 mx-auto flex flex-wrap">
+                <div class="flex flex-col md:flex-row w-full">
+                    <!-- Contact Form -->
+                    <div class="md:w-1/2 bg-white p-8 rounded-3xl shadow-2xl md:mr-8 mb-8 md:mb-0">
+                        <h2 class="text-clifford text-3xl font-bold mb-6">Send Us a Message</h2>
+                        <p class="text-zinc-600 mb-8">Fill out the form below and our team will get back to you within
+                            24 hours.</p>
+
+                        <form>
+                            <div class="mb-6">
+                                <label for="name" class="block text-sm font-medium text-zinc-700 mb-2">Full Name</label>
+                                <input type="text" id="name" name="name"
+                                    class="w-full bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-clifford focus:border-clifford p-4"
+                                    placeholder="Your name">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-sm font-medium text-zinc-700 mb-2">Email
+                                    Address</label>
+                                <input type="email" id="email" name="email"
+                                    class="w-full bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-clifford focus:border-clifford p-4"
+                                    placeholder="your.email@example.com">
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject"
+                                    class="block text-sm font-medium text-zinc-700 mb-2">Subject</label>
+                                <select id="subject" name="subject"
+                                    class="w-full bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-clifford focus:border-clifford p-4">
+                                    <option value="" disabled selected>Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="billing">Billing Questions</option>
+                                    <option value="partnership">Partnership Opportunities</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message"
+                                    class="block text-sm font-medium text-zinc-700 mb-2">Message</label>
+                                <textarea id="message" name="message" rows="5"
+                                    class="w-full bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-clifford focus:border-clifford p-4"
+                                    placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-clifford hover:bg-blue-700 text-white py-4 px-8 rounded-lg font-semibold transition-all duration-300 text-base shadow-lg hover:shadow-blue-500/50 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group">
+                                <span
+                                    class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full opacity-10 group-hover:w-32 group-hover:h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></span>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="md:w-1/2 flex flex-col">
+                        <div class="bg-clifford/10 p-8 rounded-3xl mb-6">
+                            <h2 class="text-clifford text-3xl font-bold mb-6">Contact Information</h2>
+                            <div class="flex flex-col space-y-6">
+                                <div class="flex items-start">
+                                    <div
+                                        class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 mr-4">
+                                        <i class="fas fa-map-marker-alt text-clifford text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-zinc-800">Our Office</h3>
+                                        <p class="text-zinc-600">123 Payment Street, Financial District<br>Lagos,
+                                            Nigeria</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div
+                                        class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 mr-4">
+                                        <i class="fas fa-phone-alt text-clifford text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-zinc-800">Phone</h3>
+                                        <p class="text-zinc-600">+234 800 BILLKOLLECT</p>
+                                        <p class="text-zinc-600">+234 (0) 123 456 7890</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div
+                                        class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 mr-4">
+                                        <i class="fas fa-envelope text-clifford text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-zinc-800">Email</h3>
+                                        <p class="text-zinc-600">support@billkollect.com</p>
+                                        <p class="text-zinc-600">info@billkollect.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Business Hours -->
+                        <div class="bg-zinc-950 p-8 py-12 rounded-3xl">
+                            <h2 class="text-clifford text-3xl font-bold mb-4">Business Hours</h2>
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-zinc-100">Monday - Friday:</span>
+                                    <span class="text-zinc-200 font-medium">8:00 AM - 6:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-zinc-100">Saturday:</span>
+                                    <span class="text-zinc-200 font-medium">10:00 AM - 2:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-zinc-100">Sunday:</span>
+                                    <span class="text-zinc-200 font-medium">Closed</span>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <p class="text-zinc-300"><strong>Note:</strong> Our online payment system is available
+                                    24/7, and our technical support team can be reached through our helpline at any
+                                    time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+
+
+        <!-- Map Section -->
+
+        <!-- Call to Action Section -->
+        <section class="text-white body-font bg-clifford py-16">
+            <div class="container mx-auto flex px-5 items-center justify-center flex-col">
+                <div class="text-center lg:w-2/3 w-full">
+                    <h2 class="title-font text-4xl mb-4 font-bold">Ready to simplify your payments?</h2>
+                    <p class="mb-8 text-xl leading-relaxed">Join thousands of satisfied users who enjoy seamless
+                        transactions with BillKollect.</p>
+                    <div class="flex justify-center">
+                        <button
+                            class="bg-white text-clifford py-4 px-12 rounded-lg font-semibold transition-all duration-300 text-xl shadow-lg hover:shadow-white/20 hover:-translate-y-1 active:translate-y-0">
+                            Get Started Today
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+
+        <footer class="text-zinc-400 bg-black body-font">
+
+            <section class="container mx-auto flex px-5 py-40 items-center justify-center flex-col">
+
+
+
+                <span class="text-clifford md:text-8xl text-7xl mb-4 font-bold">Payments.</span>
+                <span>
+                    <span class="text-blue-400 md:text-8xl text-7xl mb-4 font-bold px-2">Made.</span>
+                    <br class="md:hidden block" />
+                    <span class="text-white md:text-8xl text-7xl mb-4 font-bold px-2">Easy.</span>
+                </span>
+
+
+            </section>
+
+            <div
+                class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+
+
+
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1">
+                        <span class="text-white font-bold text-2xl">Bill<span
+                                class="text-clifford">Kollect</span></span>
+                        <p class="mt-4 text-gray-300 text-sm">
+                            Your one-stop solution for all your payment needs. Quick, secure, and reliable.
+                        </p>
+                        <div class="mt-6 flex space-x-6">
+                            <a href="#" class="text-gray-400 hover:text-gray-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-span-1">
+                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Solutions</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a href="about.html" class="text-base text-gray-300 hover:text-white">Airtime & Data</a>
+                            </li>
+                            <li><a href="about.html" class="text-base text-gray-300 hover:text-white">Utility Bills</a>
+                            </li>
+                            <li><a href="about.html" class="text-base text-gray-300 hover:text-white">Become a
+                                    Biller</a></li>
+                            <li><a href="about.html" class="text-base text-gray-300 hover:text-white">Merchant
+                                    Integration</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-span-1">
+                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Company</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a href="about.html" class="text-base text-gray-300 hover:text-white">About Us</a></li>
+                            <li><a href="about.html" class="text-base text-gray-300 hover:text-white">Careers</a></li>
+                            <li><a href="about.html" class="text-base text-gray-300 hover:text-white">Partners</a></li>
+                            <li><a href="about.html" class="text-base text-gray-300 hover:text-white">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-span-1">
+                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Legal</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a href="legal.html" class="text-base text-gray-300 hover:text-white">Privacy Policy</a>
+                            </li>
+                            <li><a href="legal.html" class="text-base text-gray-300 hover:text-white">Terms of
+                                    Service</a></li>
+                            <li><a href="legal.html" class="text-base text-gray-300 hover:text-white">Cookie Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="bg-clifford ">
+                <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+                    <p class="text-zinc-100 text-sm text-center sm:text-left">© 2025 BillKollect —
+                        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-zinc-300 ml-1"
+                            target="_blank">@technologies</a>
+                    </p>
+                    <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+                        <a class="text-zinc-100">
+                            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a class="ml-3 text-zinc-100">
+                            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                class="w-5 h-5" viewBox="0 0 24 24">
+                                <path
+                                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="ml-3 text-zinc-100">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                            </svg>
+                        </a>
+                        <a class="ml-3 text-zinc-100">
+                            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path stroke="none"
+                                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                                </path>
+                                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                            </svg>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    menu: false
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>
